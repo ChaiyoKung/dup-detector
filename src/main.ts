@@ -3,14 +3,15 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 
-async function traverseDirectory(path: string): Promise<Array<string>> {
+async function traverseDirectory(path: string, ignoredDirs: Array<string> = []): Promise<Array<string>> {
   const fileList: Array<string> = [];
 
   const dirents = await readdir(path, { withFileTypes: true });
   for (const dirent of dirents) {
     const fullPath = join(dirent.parentPath, dirent.name);
     if (dirent.isDirectory()) {
-      fileList.push(...(await traverseDirectory(fullPath)));
+      if (ignoredDirs.includes(dirent.name)) continue;
+      fileList.push(...(await traverseDirectory(fullPath, ignoredDirs)));
     } else {
       fileList.push(fullPath);
     }
@@ -33,10 +34,10 @@ function mapToObject<V>(map: Map<string, V>) {
   return Object.fromEntries(map.entries());
 }
 
-async function findDuplicateFiles(dirPath: string) {
+async function findDuplicateFiles(dirPath: string, ignoredDirs: Array<string> = []) {
   const fileHashes = new Map<string, Array<string>>();
 
-  const filePaths = await traverseDirectory(dirPath);
+  const filePaths = await traverseDirectory(dirPath, ignoredDirs);
   for (const filePath of filePaths) {
     const fileHash = await calculateFileHash(filePath);
 
