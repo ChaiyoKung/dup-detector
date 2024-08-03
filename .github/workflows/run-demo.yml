@@ -3,7 +3,7 @@ name: Run Demo
 on: push
 
 jobs:
-  bun-dev-demo:
+  bun-start-demo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -11,4 +11,5 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
-      - run: bun dev "./demo"
+      - run: bun run build
+      - run: bun start "./demo"
