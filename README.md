@@ -1,5 +1,7 @@
 # dup-detector
 
+Node.js app to identify duplicate files within a specified directory
+
 ## Getting Started
 
 To install dependencies:
