@@ -1,9 +1,9 @@
-import { createReadStream } from "node:fs";
+import { createReadStream, type PathLike } from "node:fs";
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
 
-async function traverseDirectory(path: string, ignoredDirs: Array<string> = []): Promise<Array<string>> {
+async function traverseDirectory(path: PathLike, ignoredDirs: Array<string> = []): Promise<Array<string>> {
   const fileList: Array<string> = [];
 
   const dirents = await readdir(path, { withFileTypes: true });
@@ -20,7 +20,7 @@ async function traverseDirectory(path: string, ignoredDirs: Array<string> = []):
   return fileList;
 }
 
-function calculateFileHash(filePath: string) {
+function calculateFileHash(filePath: PathLike) {
   return new Promise<string>((resolve, reject) => {
     const hash = createHash("sha256");
     const stream = createReadStream(filePath);
