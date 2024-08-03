@@ -52,7 +52,7 @@ async function findDuplicateFiles(dirPath: string) {
 }
 
 async function main() {
-  const dirPath = process.argv[2];
+  const dirPath = process.argv[2] ?? ".";
   const duplicatedFiles = await findDuplicateFiles(dirPath);
   for (const [fileHash, fileList] of Object.entries(duplicatedFiles)) {
     console.log(fileHash);
