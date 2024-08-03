@@ -34,7 +34,7 @@ function mapToObject<V>(map: Map<string, V>) {
   return Object.fromEntries(map.entries());
 }
 
-async function findDuplicateFiles(dirPath: string, ignoredDirs: Array<string> = []) {
+async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: Array<string> = []) {
   const fileHashes = new Map<string, Array<string>>();
 
   const filePaths = await traverseDirectory(dirPath, ignoredDirs);
