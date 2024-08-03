@@ -20,10 +20,10 @@ async function traverseDirectory(path: PathLike, ignoredDirs: Array<string> = []
   return fileList;
 }
 
-function calculateFileHash(filePath: PathLike) {
+function calculateFileHash(path: PathLike) {
   return new Promise<string>((resolve, reject) => {
     const hash = createHash("sha256");
-    const stream = createReadStream(filePath);
+    const stream = createReadStream(path);
     stream.on("error", reject);
     stream.on("data", (data) => hash.update(data));
     stream.on("end", () => resolve(hash.digest("hex")));
