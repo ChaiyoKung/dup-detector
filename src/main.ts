@@ -34,9 +34,9 @@ function mapToObject<V>(map: Map<string, V>) {
 }
 
 async function findDuplicateFiles(dirPath: string) {
-  const filePaths = await traverseDirectory(dirPath);
   const fileHashes = new Map<string, Array<string>>();
 
+  const filePaths = await traverseDirectory(dirPath);
   for (const filePath of filePaths) {
     const fileHash = await calculateFileHash(filePath);
 
