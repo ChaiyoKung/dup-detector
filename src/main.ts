@@ -52,9 +52,24 @@ async function findDuplicateFiles(dirPath: string, ignoredDirs: Array<string> = 
   return mapToObject(fileHashes);
 }
 
+const ignoredDirs = [
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  "logs",
+  "coverage",
+  ".vscode",
+  ".idea",
+  ".cache",
+  "tmp",
+  "temp",
+  "venv",
+];
+
 async function main() {
   const dirPath = process.argv[2] ?? ".";
-  const duplicatedFiles = await findDuplicateFiles(dirPath);
+  const duplicatedFiles = await findDuplicateFiles(dirPath, ignoredDirs);
   for (const [fileHash, fileList] of Object.entries(duplicatedFiles)) {
     const isDuplicated = fileList.length > 1;
     if (!isDuplicated) continue;
