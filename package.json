@@ -2,6 +2,9 @@
   "name": "dup-detector",
   "module": "main.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun run ./src/main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
