@@ -69,7 +69,11 @@ const ignoredDirs = [
 
 async function main() {
   const dirPath = process.argv[2] ?? ".";
+
+  console.log(`find duplicated files in "${dirPath}"`);
   const duplicatedFiles = await findDuplicateFiles(dirPath, ignoredDirs);
+
+  console.log("here is duplicated files:");
   for (const [fileHash, fileList] of Object.entries(duplicatedFiles)) {
     const isDuplicated = fileList.length > 1;
     if (!isDuplicated) continue;
