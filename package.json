@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./dist/main.js",
     "dev": "bun run ./src/main.ts",
+    "dev:watch": "bun --watch run ./src/main.ts",
     "build": "bun build ./src/main.ts --outdir ./dist --target node --minify",
     "format": "prettier ./src --write"
   },
