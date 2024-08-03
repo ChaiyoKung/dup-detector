@@ -1,0 +1,7 @@
+demo\lovelive-1.jpg [duplicated with]:
+  - demo\lovelive-1 copy.jpg
+  - demo\sub\lovelive-1.jpg
+  - demo\sub\sub2-1\lovelive-1.jpg
+  - demo\sub\sub2-2\lovelive-1.jpg
+demo\info.txt [duplicated with]:
+  - demo\sub\sub2-1\sub3\info.txt

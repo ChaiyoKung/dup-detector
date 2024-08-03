@@ -1,7 +1,0 @@
-test-data\lovelive-1.jpg [duplicated with]:
-  - test-data\lovelive-1 copy.jpg
-  - test-data\sub\lovelive-1.jpg
-  - test-data\sub\sub2-1\lovelive-1.jpg
-  - test-data\sub\sub2-2\lovelive-1.jpg
-test-data\info.txt [duplicated with]:
-  - test-data\sub\sub2-1\sub3\info.txt
