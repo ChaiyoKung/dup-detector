@@ -1,5 +1,7 @@
 # dup-detector
 
+## Getting Started
+
 To install dependencies:
 
 ```bash
