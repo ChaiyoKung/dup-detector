@@ -3,7 +3,12 @@ name: Run Demo
 on: push
 
 jobs:
-  hello-world:
+  bun-dev-demo:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello World!"
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1
+      - run: bun install --frozen-lockfile
+      - run: bun dev "./demo"
