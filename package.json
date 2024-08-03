@@ -3,10 +3,12 @@
   "module": "main.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run ./src/main.ts"
+    "dev": "bun run ./src/main.ts",
+    "format": "prettier ./src --write"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prettier": "^3.3.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
