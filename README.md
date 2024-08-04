@@ -29,15 +29,17 @@ This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) 
 $ bun dev "./demo"
 
 # Result
-a69f07d64295ce85b4fe7607a0931539864b4abfe8b0a6110e85d3f32bf34ec5
- - demo/info.txt
- - demo/sub/sub2-1/sub3/info.txt
-c300a04ac8b64d960fce870cebaf60c77e5db28362bf225894db7f583e971956
- - demo/lovelive-1 copy.jpg
- - demo/lovelive-1.jpg
- - demo/sub/lovelive-1.jpg
- - demo/sub/sub2-1/lovelive-1.jpg
- - demo/sub/sub2-2/lovelive-1.jpg
-1e11070fca334b61126bad2557ef415735d811370dcaa41558cdeffe4d05952b
- - demo/lovelive-2.jpg
+find duplicated files in "./demo"
+Duplicate files found:
+
+File no.1:
+ - demo\info.txt
+ - demo\sub\sub2-1\sub3\info.txt
+
+File no.2:
+ - demo\lovelive-1 copy.jpg
+ - demo\lovelive-1.jpg
+ - demo\sub\lovelive-1.jpg
+ - demo\sub\sub2-1\lovelive-1.jpg
+ - demo\sub\sub2-2\lovelive-1.jpg
 ```
