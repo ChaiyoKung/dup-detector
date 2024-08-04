@@ -30,12 +30,13 @@ function calculateFileHash(path: PathLike) {
   });
 }
 
-function mapToObject<V>(map: Map<string, V>) {
-  return Object.fromEntries(map.entries());
+function setToArray<T>(set: Set<T>) {
+  return Array.from(set);
 }
 
 async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: Array<string> = []) {
   const fileHashes = new Map<string, Array<string>>();
+  const duplicates = new Set<Array<string>>();
 
   const filePaths = await traverseDirectory(dirPath, ignoredDirs);
   for (const filePath of filePaths) {
@@ -49,7 +50,11 @@ async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: Array<string> 
     }
   }
 
-  return mapToObject(fileHashes);
+  for (const fileList of fileHashes.values()) {
+    if (fileList.length > 1) duplicates.add(fileList);
+  }
+
+  return setToArray(duplicates);
 }
 
 const ignoredDirs = [
@@ -72,13 +77,14 @@ async function main() {
 
   console.log(`find duplicated files in "${dirPath}"`);
   const duplicatedFiles = await findDuplicateFiles(dirPath, ignoredDirs);
+  if (duplicatedFiles.length === 0) {
+    console.log("No duplicate files found");
+    return;
+  }
 
-  console.log("here is duplicated files:");
-  for (const [fileHash, fileList] of Object.entries(duplicatedFiles)) {
-    const isDuplicated = fileList.length > 1;
-    if (!isDuplicated) continue;
-
-    console.log(fileHash);
+  console.log("Duplicate files found:");
+  for (const [index, fileList] of duplicatedFiles.entries()) {
+    console.log(`\nFile no.${index + 1}:`);
     for (const filePath of fileList) {
       console.log(" - " + filePath);
     }
