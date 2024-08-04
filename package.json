@@ -8,6 +8,8 @@
     "dev:watch": "bun --watch run ./src/main.ts",
     "build": "bun build ./src/main.ts --outdir ./dist --target node --minify",
     "prod": "bun run build && bun start",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
     "format": "prettier ./src --write"
   },
   "devDependencies": {
