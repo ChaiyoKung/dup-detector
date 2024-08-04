@@ -3,9 +3,9 @@ import { setToArray } from "./utils/set";
 import { traverseDirectory } from "./libs/directory";
 import { calculateFileHash } from "./libs/file";
 
-export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: Array<string> = []) {
-  const fileHashes = new Map<string, Array<string>>();
-  const duplicates = new Set<Array<string>>();
+export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[] = []) {
+  const fileHashes = new Map<string, string[]>();
+  const duplicates = new Set<string[]>();
 
   const filePaths = await traverseDirectory(dirPath, ignoredDirs);
   for (const filePath of filePaths) {

@@ -2,8 +2,8 @@ import { type PathLike } from "node:fs";
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 
-export async function traverseDirectory(path: PathLike, ignoredDirs: Array<string> = []): Promise<Array<string>> {
-  const fileList: Array<string> = [];
+export async function traverseDirectory(path: PathLike, ignoredDirs: string[] = []): Promise<string[]> {
+  const fileList: string[] = [];
 
   const dirents = await readdir(path, { withFileTypes: true });
   for (const dirent of dirents) {
