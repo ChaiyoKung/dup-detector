@@ -7,6 +7,7 @@
     "dev": "bun run ./src/main.ts",
     "dev:watch": "bun --watch run ./src/main.ts",
     "build": "bun build ./src/main.ts --outdir ./dist --target node --minify",
+    "prod": "bun run build && bun start",
     "format": "prettier ./src --write"
   },
   "devDependencies": {
