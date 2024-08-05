@@ -16,6 +16,7 @@ const ignoredDirs = [
 ];
 
 async function main() {
+  console.time("Done");
   const dirPath = process.argv[2] ?? ".";
 
   console.log(`find duplicated files in "${dirPath}"`);
@@ -32,6 +33,9 @@ async function main() {
       console.log(" - " + filePath);
     }
   }
+
+  console.log(""); // new line
+  console.timeEnd("Done");
 }
 
 main();
