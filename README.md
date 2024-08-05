@@ -33,13 +33,13 @@ find duplicated files in "./demo"
 Duplicate files found:
 
 File no.1:
- - demo\info.txt
- - demo\sub\sub2-1\sub3\info.txt
+ - D:\dup-detector\demo\info.txt
+ - D:\dup-detector\demo\sub\sub2-1\sub3\info.txt
 
 File no.2:
- - demo\lovelive-1 copy.jpg
- - demo\lovelive-1.jpg
- - demo\sub\lovelive-1.jpg
- - demo\sub\sub2-1\lovelive-1.jpg
- - demo\sub\sub2-2\lovelive-1.jpg
+ - D:\dup-detector\demo\lovelive-1 copy.jpg
+ - D:\dup-detector\demo\lovelive-1.jpg
+ - D:\dup-detector\demo\sub\lovelive-1.jpg
+ - D:\dup-detector\demo\sub\sub2-1\lovelive-1.jpg
+ - D:\dup-detector\demo\sub\sub2-2\lovelive-1.jpg
 ```
