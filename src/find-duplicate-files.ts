@@ -7,15 +7,15 @@ import { Cache } from "file-system-cache";
 export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[] = []) {
   const fileHashes = new Map<string, string[]>();
   const duplicates = new Set<string[]>();
-  const fileHashCache = new Cache({ basePath: "./.dup-detector/.cache" });
+  const cache = new Cache({ basePath: "./.dup-detector/.cache" });
 
   const filePaths = await traverseDirectory(dirPath, ignoredDirs);
   for (const filePath of filePaths) {
     const cacheKey = await getFileCacheKey(filePath);
-    let fileHash = await fileHashCache.get(cacheKey);
+    let fileHash = await cache.get(cacheKey);
     if (fileHash === undefined) {
       fileHash = await calculateFileHash(filePath);
-      fileHashCache.set(cacheKey, fileHash);
+      cache.set(cacheKey, fileHash);
     }
 
     const existingFiles = fileHashes.get(fileHash);
