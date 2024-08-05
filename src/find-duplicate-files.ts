@@ -15,7 +15,7 @@ export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[
     let fileHash = await cache.get(cacheKey);
     if (fileHash === undefined) {
       fileHash = await calculateFileHash(filePath);
-      cache.set(cacheKey, fileHash);
+      await cache.set(cacheKey, fileHash);
     }
 
     const existingFiles = fileHashes.get(fileHash);
