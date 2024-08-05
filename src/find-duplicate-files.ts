@@ -9,8 +9,7 @@ export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[
   const duplicates = new Set<string[]>();
   const cache = new Cache({ basePath: "./.dup-detector/.cache" });
 
-  const filePaths = await traverseDirectory(dirPath, ignoredDirs);
-  for (const filePath of filePaths) {
+  for await (const filePath of traverseDirectory(dirPath, ignoredDirs)) {
     const cacheKey = await getFileCacheKey(filePath);
     let fileHash = await cache.get(cacheKey);
     if (fileHash === undefined) {
