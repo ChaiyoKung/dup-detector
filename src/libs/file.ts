@@ -1,4 +1,5 @@
 import { createReadStream, type PathLike } from "node:fs";
+import { stat } from "node:fs/promises";
 import { createHash } from "node:crypto";
 
 export function calculateFileHash(path: PathLike) {
@@ -9,4 +10,9 @@ export function calculateFileHash(path: PathLike) {
     stream.on("data", (data) => hash.update(data));
     stream.on("end", () => resolve(hash.digest("hex")));
   });
+}
+
+export async function getFileCacheKey(path: PathLike) {
+  const fileStat = await stat(path);
+  return [path, fileStat.mtimeMs].join(":");
 }

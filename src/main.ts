@@ -13,6 +13,7 @@ const ignoredDirs = [
   "tmp",
   "temp",
   "venv",
+  ".dup-detector",
 ];
 
 async function main() {
