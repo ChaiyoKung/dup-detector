@@ -20,6 +20,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "file-system-cache": "^2.4.7"
+    "dayjs": "^1.11.12",
+    "file-system-cache": "^2.4.7",
+    "winston": "^3.13.1"
   }
 }
