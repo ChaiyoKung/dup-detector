@@ -20,6 +20,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "commander": "^12.1.0",
     "dayjs": "^1.11.12",
     "file-system-cache": "^2.4.7",
     "winston": "^3.13.1"

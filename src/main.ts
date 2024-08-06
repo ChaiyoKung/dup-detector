@@ -1,3 +1,4 @@
+import { Command } from "commander";
 import { findDuplicateFiles } from "./find-duplicate-files";
 import { logger } from "./logger";
 
@@ -17,27 +18,32 @@ const ignoredDirs = [
   ".dup-detector",
 ];
 
-async function main() {
-  console.time("Done");
-  const dirPath = process.argv[2] ?? ".";
-
-  logger.info(`find duplicated files in "${dirPath}"`);
-  const duplicatedFiles = await findDuplicateFiles(dirPath, ignoredDirs);
-  if (duplicatedFiles.length === 0) {
-    logger.info("No duplicate files found");
-    return;
-  }
-
-  logger.info("Duplicate files found:");
-  for (let i = 0; i < duplicatedFiles.length; i++) {
-    logger.info(`\nFile no.${i + 1}:`);
-    for (const filePath of duplicatedFiles[i]) {
-      logger.info(" - " + filePath);
-    }
-  }
-
-  console.log(""); // new line
-  console.timeEnd("Done");
+interface Options {
+  dir: string;
 }
 
-main();
+const program = new Command();
+program.requiredOption("-d, --dir <path>", "specify the directory path", ".");
+program.parse();
+
+const options = program.opts<Options>();
+
+console.time("Done");
+
+logger.info(`find duplicated files in "${options.dir}"`);
+const duplicatedFiles = await findDuplicateFiles(options.dir, ignoredDirs);
+if (duplicatedFiles.length === 0) {
+  logger.info("No duplicate files found");
+  process.exit(0);
+}
+
+logger.info("Duplicate files found:");
+for (let i = 0; i < duplicatedFiles.length; i++) {
+  logger.info(`\nFile no.${i + 1}:`);
+  for (const filePath of duplicatedFiles[i]) {
+    logger.info(" - " + filePath);
+  }
+}
+
+console.log(""); // new line
+console.timeEnd("Done");
