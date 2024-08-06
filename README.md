@@ -27,7 +27,7 @@ This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) 
 ## Demo
 
 ```bash
-$ bun dev --dir "./demo"
+$ bun prod --dir "./demo"
 
 # Result
 find duplicated files in "./demo"
