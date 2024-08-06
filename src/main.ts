@@ -1,22 +1,7 @@
 import { Command } from "commander";
 import { findDuplicateFiles } from "./find-duplicate-files";
 import { logger } from "./logger";
-
-const ignoredDirs = [
-  "node_modules",
-  ".git",
-  "dist",
-  "build",
-  "logs",
-  "coverage",
-  ".vscode",
-  ".idea",
-  ".cache",
-  "tmp",
-  "temp",
-  "venv",
-  ".dup-detector",
-];
+import { ignoredDirs } from "./configs/ignore-dirs";
 
 interface Options {
   dir: string;

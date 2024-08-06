@@ -1,0 +1,15 @@
+export const ignoredDirs = [
+  "node_modules",
+  ".git",
+  "dist",
+  "build",
+  "logs",
+  "coverage",
+  ".vscode",
+  ".idea",
+  ".cache",
+  "tmp",
+  "temp",
+  "venv",
+  ".dup-detector",
+];
