@@ -28,9 +28,9 @@ async function main() {
   }
 
   console.log("Duplicate files found:");
-  for (const [index, fileList] of duplicatedFiles.entries()) {
-    console.log(`\nFile no.${index + 1}:`);
-    for (const filePath of fileList) {
+  for (let i = 0; i < duplicatedFiles.length; i++) {
+    console.log(`\nFile no.${i + 1}:`);
+    for (const filePath of duplicatedFiles[i]) {
       console.log(" - " + filePath);
     }
   }
