@@ -42,4 +42,8 @@ File no.2:
  - D:\dup-detector\demo\sub\lovelive-1.jpg
  - D:\dup-detector\demo\sub\sub2-1\lovelive-1.jpg
  - D:\dup-detector\demo\sub\sub2-2\lovelive-1.jpg
+
+File no.3:
+ - D:\dup-detector\demo\สวัสดี.txt
+ - D:\dup-detector\demo\こんにちは.txt
 ```
