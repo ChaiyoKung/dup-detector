@@ -13,12 +13,13 @@ bun install
 To run:
 
 ```bash
-bun dev "<path/to/directory>"
+bun dev -d "<path/to/directory>"
+bun dev --dir "<path/to/directory>"
 
 # Example
-bun dev "./demo"
-bun dev "D:/dup-detector/demo"
-bun dev "D:\\dup-detector\\demo"
+bun dev -d "./demo"
+bun dev --dir "D:/dup-detector/demo"
+bun dev --dir "D:\\dup-detector\\demo"
 ```
 
 This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
@@ -26,7 +27,7 @@ This project was created using `bun init` in bun v1.1.21. [Bun](https://bun.sh) 
 ## Demo
 
 ```bash
-$ bun dev "./demo"
+$ bun dev --dir "./demo"
 
 # Result
 find duplicated files in "./demo"
