@@ -1,7 +1,7 @@
 import { type PathLike } from "node:fs";
 import { setToArray } from "./utils/set";
 import { traverseDirectory } from "./libs/directory";
-import { calculateFileHash, getFileCacheKey } from "./libs/file";
+import { calculateFileHash, getCacheKeyFromPath } from "./libs/file";
 import { Cache } from "file-system-cache";
 
 export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[] = []) {
@@ -10,7 +10,7 @@ export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[
   const cache = new Cache({ basePath: "./.dup-detector/.cache" });
 
   for await (const filePath of traverseDirectory(dirPath, ignoredDirs)) {
-    const cacheKey = await getFileCacheKey(filePath);
+    const cacheKey = await getCacheKeyFromPath(filePath);
     let fileHash = await cache.get(cacheKey);
     if (fileHash === undefined) {
       fileHash = await calculateFileHash(filePath);

@@ -12,7 +12,7 @@ export function calculateFileHash(path: PathLike) {
   });
 }
 
-export async function getFileCacheKey(path: PathLike) {
+export async function getCacheKeyFromPath(path: PathLike) {
   const fileStat = await stat(path);
   return [path, fileStat.mtimeMs].join(":");
 }
