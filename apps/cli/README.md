@@ -25,7 +25,8 @@ pnpm exec nx run cli:dev --dir "D:\\dup-detector\\demo"
 ## Demo
 
 ```bash
-$ bun prod --dir "./demo"
+$ pnpm exec nx run cli:build
+$ node ./dist/apps/cli/main.js --dir ./apps/cli/demo
 
 # Result
 find duplicated files in "./demo"
