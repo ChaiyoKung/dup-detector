@@ -11,5 +11,6 @@ export const ignoredDirs = [
   "tmp",
   "temp",
   "venv",
+  ".nx",
   ".dup-detector",
 ];

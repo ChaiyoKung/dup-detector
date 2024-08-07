@@ -6,9 +6,26 @@ jobs:
   bun-prod-demo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          bun-version: latest
-      - run: bun install --frozen-lockfile
-      - run: bun prod "./demo"
+          version: 8
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build cli
+        run: pnpm exec nx run cli:build
+
+      - name: Run production
+        run: node ./dist/apps/cli/main.js --dir ./apps/cli/demo

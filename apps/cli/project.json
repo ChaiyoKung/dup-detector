@@ -1,0 +1,52 @@
+{
+  "name": "cli",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/cli/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/cli",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/cli/src/main.ts",
+        "tsConfig": "apps/cli/tsconfig.app.json",
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": false,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/cli",
+        "command": "tsx ./src/main.ts"
+      }
+    },
+    "dev:watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/cli",
+        "command": "tsx --watch ./src/main.ts"
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test"
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/cli",
+        "command": "prettier ./src --write"
+      }
+    }
+  }
+}
