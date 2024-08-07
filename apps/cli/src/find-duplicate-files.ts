@@ -1,9 +1,8 @@
-import { type PathLike } from "node:fs";
 import { setToArray } from "./utils/set";
 import { traverseDirectory } from "./libs/directory";
 import { getFileHash } from "./libs/file";
 
-export async function findDuplicateFiles(dirPath: PathLike, ignoredDirs: string[] = []) {
+export async function findDuplicateFiles(dirPath: string, ignoredDirs: string[] = []) {
   const fileHashes = new Map<string, string[]>();
   const duplicates = new Set<string[]>();
 
