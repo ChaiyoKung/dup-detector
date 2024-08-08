@@ -7,11 +7,9 @@ interface Options {
   dir: string;
 }
 
-async function main() {
-  const program = new Command();
-  program.requiredOption("-d, --dir <path>", "specify the directory path", ".");
-  program.parse();
+const program = new Command();
 
+program.requiredOption("-d, --dir <path>", "specify the directory path", ".").action(async () => {
   const options = program.opts<Options>();
 
   console.time("Done");
@@ -33,6 +31,6 @@ async function main() {
 
   console.log(""); // new line
   console.timeEnd("Done");
-}
+});
 
-main();
+program.parse(process.argv);
