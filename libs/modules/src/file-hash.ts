@@ -12,7 +12,7 @@ export class FileHash {
     });
   }
 
-  public async getFileHash(filePath: PathLike): Promise<string> {
+  public async getHash(filePath: PathLike): Promise<string> {
     return this.calculateFileHash(filePath);
   }
 }

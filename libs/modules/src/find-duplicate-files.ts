@@ -26,7 +26,7 @@ export class FindDuplicateFiles {
     const duplicates = new Set<string[]>();
 
     for await (const filePath of traverseDirectory(dirPath, ignoredDirs)) {
-      const fileHash = await this.fileHash.getFileHash(filePath);
+      const fileHash = await this.fileHash.getHash(filePath);
       const existingFiles = fileHashes.get(fileHash);
       if (existingFiles === undefined) {
         fileHashes.set(fileHash, [filePath]);

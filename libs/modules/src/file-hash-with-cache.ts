@@ -17,7 +17,7 @@ export class FileHashWithCache extends FileHash {
     return [path, fileStat.mtimeMs].join(":");
   }
 
-  public override async getFileHash(filePath: string): Promise<string> {
+  public override async getHash(filePath: string): Promise<string> {
     const cacheKey = await this.getCacheKeyFromPath(filePath);
     let fileHash = await this.fileHashCache.get(cacheKey);
     if (fileHash === undefined) {
