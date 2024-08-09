@@ -21,7 +21,7 @@ export class FileHashWithCache extends FileHash {
     const cacheKey = await this.getCacheKeyFromPath(filePath);
     let fileHash = await this.fileHashCache.get(cacheKey);
     if (fileHash === undefined) {
-      fileHash = await this.calculateFileHash(filePath);
+      fileHash = await this.calculateHash(filePath);
       await this.fileHashCache.set(cacheKey, fileHash);
     }
     return fileHash;
