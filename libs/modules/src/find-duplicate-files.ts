@@ -5,7 +5,7 @@ import { FileHash } from "./file-hash";
 export class FindDuplicateFiles {
   constructor(private readonly fileHash: FileHash) {}
 
-  public async findDuplicateFiles(dirPath: string, ignoredDirs: string[] = []): Promise<string[][]> {
+  public async find(dirPath: string, ignoredDirs: string[] = []): Promise<string[][]> {
     const fileHashes = new Map<string, string[]>();
     const duplicates = new Set<string[]>();
 
