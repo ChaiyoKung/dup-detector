@@ -3,6 +3,22 @@ import { traverseDirectory } from "./directory";
 import { FileHash } from "./file-hash";
 
 export class FindDuplicateFiles {
+  static defaultIgnoreDirs: string[] = [
+    "node_modules",
+    ".git",
+    "dist",
+    "build",
+    "logs",
+    "coverage",
+    ".vscode",
+    ".idea",
+    ".cache",
+    "tmp",
+    "temp",
+    "venv",
+    ".nx",
+  ];
+
   constructor(private readonly fileHash: FileHash) {}
 
   public async find(dirPath: string, ignoredDirs: string[] = []): Promise<string[][]> {

@@ -1,7 +1,6 @@
 import { Command } from "commander";
 import { FileHashWithCache, FindDuplicateFiles } from "@dup-detector/modules";
 import { logger } from "./logger";
-import { ignoredDirs } from "./configs/ignore-dirs";
 import { resolve } from "node:path";
 import { FileSystemCacheAdapter } from "./file-system-cache-adapter";
 import { FileSystemCache } from "file-system-cache";
@@ -22,7 +21,8 @@ program.requiredOption("-d, --dir <path>", "specify the directory path", ".").ac
   console.time("Done");
 
   logger.info(`find duplicated files in "${options.dir}"`);
-  const duplicatedFiles = await findDuplicateFiles.find(options.dir, ignoredDirs);
+  const ignoreDirs: string[] = [...FindDuplicateFiles.defaultIgnoreDirs, ".dup-detector"];
+  const duplicatedFiles = await findDuplicateFiles.find(options.dir, ignoreDirs);
   if (duplicatedFiles.length === 0) {
     logger.info("No duplicate files found");
     process.exit(0);
