@@ -25,7 +25,7 @@ program.requiredOption("-d, --dir <path>", "specify the directory path", ".").ac
   const duplicatedFiles = await findDuplicateFiles.find(options.dir, ignoreDirs);
   if (duplicatedFiles.length === 0) {
     logger.info("No duplicate files found");
-    process.exit(0);
+    return;
   }
 
   logger.info("Duplicate files found:");
