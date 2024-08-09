@@ -1,1 +1,3 @@
-export * from "./lib/modules";
+export * from "./find-duplicate-files";
+export * from "./file-hash";
+export * from "./file-hash-with-cache";
