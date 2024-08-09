@@ -9,6 +9,7 @@
     "@nx/eslint": "19.5.6",
     "@nx/eslint-plugin": "19.5.6",
     "@nx/js": "19.5.6",
+    "@nx/next": "19.5.6",
     "@nx/node": "19.5.6",
     "@nx/vite": "19.5.6",
     "@nx/web": "19.5.6",
@@ -35,6 +36,9 @@
     "commander": "^12.1.0",
     "dayjs": "^1.11.12",
     "file-system-cache": "2.4.7",
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "tslib": "^2.3.0",
     "winston": "^3.13.1"
   }
