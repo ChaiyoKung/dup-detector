@@ -29,3 +29,30 @@ jobs:
 
       - name: Run production
         run: node ./dist/apps/cli/main.js --dir ./apps/cli/demo
+
+  test-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+          run_install: false
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint web
+        run: pnpm exec nx run web:lint
+
+      - name: Build web
+        run: pnpm exec nx run web:build
