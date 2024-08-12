@@ -1,10 +1,6 @@
 import { FileHash, FindDuplicateFiles } from "@dup-detector/modules";
 import { NextRequest, NextResponse } from "next/server";
-
-function extractErrorMessage(error: unknown) {
-  if (error instanceof Error) return error.message;
-  return String(error);
-}
+import { extractErrorMessage } from "../_utils/extract-error-message";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
