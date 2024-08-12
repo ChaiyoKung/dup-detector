@@ -3,7 +3,7 @@ name: Run Test
 on: push
 
 jobs:
-  bun-prod-demo:
+  test-cli:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
