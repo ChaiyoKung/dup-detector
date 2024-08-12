@@ -2,7 +2,7 @@ import { contentType } from "mime-types";
 import { NextRequest, NextResponse } from "next/server";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { extractErrorMessage } from "../_utils/extract-error-message";
+import { extractErrorMessage } from "../../../../utils/extract-error-message";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
