@@ -20,8 +20,8 @@ export const useDataStore = create<DataStore>((set) => ({
       if (!response.ok) throw new Error(body.message);
       set({ data: body.data });
     } catch (error) {
+      console.error(error);
       const errorMessage = extractErrorMessage(error);
-      console.error(errorMessage);
       set({ error: errorMessage });
     } finally {
       set({ isLoading: false });
