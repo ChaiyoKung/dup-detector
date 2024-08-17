@@ -28,7 +28,7 @@ export function Header() {
               name="dir-path"
               id="dir-path"
               placeholder={data}
-              className="p-2 border bg-white rounded-xl bg-gray-50 outline-blue-500 text-gray-800 w-full"
+              className="p-2 border rounded-xl bg-gray-50 outline-blue-500 text-gray-800 w-full"
               required
               disabled={isLoading}
               value={dirPath}
