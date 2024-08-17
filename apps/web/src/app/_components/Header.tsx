@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useDataStore } from "../_stores/useDataStore";
+import useCwd from "../../../hooks/useCwd";
 
 export function Header() {
   const [dirPath, setDirPath] = useState<string>("");
   const fetchData = useDataStore((state) => state.fetchData);
   const isLoading = useDataStore((state) => state.isLoading);
+  const { data } = useCwd();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,7 +27,7 @@ export function Header() {
               type="text"
               name="dir-path"
               id="dir-path"
-              placeholder="D:/Projects/dup-detector/apps/cli/demo"
+              placeholder={data}
               className="p-2 border bg-white rounded-xl bg-gray-50 outline-blue-500 text-gray-800 w-full"
               required
               disabled={isLoading}
