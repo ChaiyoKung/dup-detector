@@ -16,6 +16,7 @@ export default function useLookupFile(path: string) {
         if (!response.ok) throw new Error(body.message);
         setData(body.data);
       } catch (error) {
+        console.error(error);
         const errorMessage = extractErrorMessage(error);
         setError(errorMessage);
       } finally {
