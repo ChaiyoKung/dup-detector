@@ -37,7 +37,7 @@ export function Header() {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 border border-blue-500 text-white py-2 px-4 rounded-xl"
+            className="bg-blue-500 hover:bg-blue-600 transition-colors border border-blue-500 text-white py-2 px-4 rounded-xl"
             disabled={isLoading}
           >
             Find
