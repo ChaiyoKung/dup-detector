@@ -13,33 +13,35 @@ export function Header() {
   };
 
   return (
-    <header className="mx-auto p-4 bg-white rounded-bl-xl rounded-br-xl border-b text-center flex flex-col items-center gap-4">
-      <h1 className="text-2xl font-bold text-gray-800">Dup-Detector</h1>
-      <form onSubmit={handleSubmit} className="flex gap-1 items-end">
-        <div className="flex flex-col">
-          <label htmlFor="dir-path" className="text-gray-500">
-            Enter directory absolute path:
-          </label>
-          <input
-            type="text"
-            name="dir-path"
-            id="dir-path"
-            placeholder="D:/Projects/dup-detector/apps/cli/demo"
-            className="p-2 border bg-white rounded-xl bg-gray-50 outline-blue-500 text-gray-800"
-            required
+    <header className="mx-auto p-4 bg-white rounded-bl-xl rounded-br-xl border-b">
+      <div className="container max-w-4xl mx-auto flex flex-col gap-4">
+        <h1 className="text-2xl font-bold text-gray-800 text-center">Dup-Detector</h1>
+        <form onSubmit={handleSubmit} className="flex gap-1 items-end w-full">
+          <div className="flex flex-col w-full">
+            <label htmlFor="dir-path" className="text-gray-500 text-sm">
+              Enter directory absolute path:
+            </label>
+            <input
+              type="text"
+              name="dir-path"
+              id="dir-path"
+              placeholder="D:/Projects/dup-detector/apps/cli/demo"
+              className="p-2 border bg-white rounded-xl bg-gray-50 outline-blue-500 text-gray-800 w-full"
+              required
+              disabled={isLoading}
+              value={dirPath}
+              onChange={(event) => setDirPath(event.target.value)}
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 border border-blue-500 text-white py-2 px-4 rounded-xl"
             disabled={isLoading}
-            value={dirPath}
-            onChange={(event) => setDirPath(event.target.value)}
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 border border-blue-500 text-white p-2 rounded-xl"
-          disabled={isLoading}
-        >
-          Find
-        </button>
-      </form>
+          >
+            Find
+          </button>
+        </form>
+      </div>
     </header>
   );
 }
