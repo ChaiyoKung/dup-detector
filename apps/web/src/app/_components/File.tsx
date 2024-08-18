@@ -1,23 +1,28 @@
-import { useMemo } from "react";
+import { useDataStore } from "../_stores/useDataStore";
 import { FilePreview } from "./FilePreview";
 
 export interface FileProps {
   path: string;
+  showDelete?: boolean;
 }
 
-export function File({ path }: FileProps) {
-  const checkboxId = useMemo(() => ["select-path", path].join("|"), [path]);
+export function File({ path, showDelete = false }: FileProps) {
+  const deleteFile = useDataStore((state) => state.deleteData);
 
   return (
-    <label
-      htmlFor={checkboxId}
-      className="flex flex-col gap-2 items-start justify-between border bg-white rounded-xl p-4 cursor-pointer"
-    >
+    <div className="flex flex-col gap-2 items-start justify-between border bg-white rounded-xl p-4">
       <div className="flex items-start gap-2">
-        <input type="checkbox" name="select-path" id={checkboxId} value={path} className="accent-blue-500 mt-[1px]" />
-        <span className="text-gray-800 text-xs break-all">{path}</span>
+        <div className="text-gray-800 text-xs break-all">{path}</div>
+        {showDelete && (
+          <button
+            className="text-xs bg-red-500 hover:bg-red-600 transition-colors border border-red-500 text-white px-2 py-1 rounded-full"
+            onClick={() => deleteFile(path)}
+          >
+            Del
+          </button>
+        )}
       </div>
       <FilePreview path={path} />
-    </label>
+    </div>
   );
 }

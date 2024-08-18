@@ -6,6 +6,7 @@ export interface DataStore {
   error: string | undefined;
   isLoading: boolean;
   fetchData: (dirPath: string) => void;
+  deleteData: (filePath: string) => void;
 }
 
 export const useDataStore = create<DataStore>((set) => ({
@@ -25,6 +26,19 @@ export const useDataStore = create<DataStore>((set) => ({
       set({ error: errorMessage });
     } finally {
       set({ isLoading: false });
+    }
+  },
+  deleteData: async (filePath) => {
+    try {
+      const response = await fetch("/api/files", {
+        method: "DELETE",
+        body: JSON.stringify({ path: filePath }),
+      });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.message);
+      set((state) => ({ data: state.data?.map((paths) => paths.filter((path) => path !== filePath)) }));
+    } catch (error) {
+      console.error(error);
     }
   },
 }));
