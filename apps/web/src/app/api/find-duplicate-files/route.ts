@@ -1,9 +1,8 @@
-import { FileHashWithCache, FindDuplicateFiles } from "@dup-detector/modules";
+import { FileHashWithCache, FileSystemCacheAdapter, FindDuplicateFiles } from "@dup-detector/modules";
 import { NextRequest, NextResponse } from "next/server";
 import { extractErrorMessage } from "../../../../utils/extract-error-message";
 import { FileSystemCache } from "file-system-cache";
 import { resolve } from "node:path";
-import { FileSystemCacheAdapter } from "../_utils/file-system-cache-adapter";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

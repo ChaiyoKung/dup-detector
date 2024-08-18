@@ -1,8 +1,7 @@
 import { Command } from "commander";
-import { FileHashWithCache, FindDuplicateFiles } from "@dup-detector/modules";
+import { FileHashWithCache, FileSystemCacheAdapter, FindDuplicateFiles } from "@dup-detector/modules";
 import { logger } from "./logger";
 import { resolve } from "node:path";
-import { FileSystemCacheAdapter } from "./file-system-cache-adapter";
 import { FileSystemCache } from "file-system-cache";
 
 interface Options {
