@@ -15,8 +15,7 @@ export async function GET(request: NextRequest) {
     const fileHashCache = new FileSystemCache({ basePath: resolve(process.cwd(), ".dup-detector/.cache") });
     const fileHashWithCache = new FileHashWithCache(new FileSystemCacheAdapter(fileHashCache));
     const findDuplicateFiles = new FindDuplicateFiles(fileHashWithCache);
-    const ignoreDirs: string[] = [...FindDuplicateFiles.defaultIgnoreDirs, ".next"];
-    const duplicatedFiles = await findDuplicateFiles.find(dirPath, ignoreDirs);
+    const duplicatedFiles = await findDuplicateFiles.find(dirPath);
     return NextResponse.json({ data: duplicatedFiles });
   } catch (error) {
     console.error(error);
