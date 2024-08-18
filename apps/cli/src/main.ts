@@ -20,8 +20,7 @@ program.requiredOption("-d, --dir <path>", "specify the directory path", ".").ac
   console.time("Done");
 
   logger.info(`find duplicated files in "${options.dir}"`);
-  const ignoreDirs: string[] = [...FindDuplicateFiles.defaultIgnoreDirs, ".dup-detector"];
-  const duplicatedFiles = await findDuplicateFiles.find(options.dir, ignoreDirs);
+  const duplicatedFiles = await findDuplicateFiles.find(options.dir);
   if (duplicatedFiles.length === 0) {
     logger.info("No duplicate files found");
     return;
