@@ -17,6 +17,7 @@ export class FindDuplicateFiles {
     "temp",
     "venv",
     ".nx",
+    ".dup-detector",
   ];
 
   constructor(private readonly fileHash: FileHash) {}
