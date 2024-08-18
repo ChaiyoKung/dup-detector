@@ -28,7 +28,7 @@ jobs:
         run: pnpm exec nx run cli:build
 
       - name: Run production
-        run: node ./dist/apps/cli/main.js --dir ./apps/cli/demo
+        run: node ./dist/apps/cli/main.js --dir ./demo
 
   test-web:
     runs-on: ubuntu-latest
