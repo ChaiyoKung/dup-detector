@@ -22,7 +22,10 @@ export class FindDuplicateFiles {
 
   constructor(private readonly fileHash: FileHash) {}
 
-  public async find(dirPath: string, ignoredDirs: string[] = []): Promise<string[][]> {
+  public async find(
+    dirPath: string,
+    ignoredDirs: string[] = FindDuplicateFiles.defaultIgnoreDirs
+  ): Promise<string[][]> {
     const fileHashes = new Map<string, string[]>();
     const duplicates = new Set<string[]>();
 
