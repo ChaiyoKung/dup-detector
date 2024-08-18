@@ -1,6 +1,9 @@
-import { FileHash, FindDuplicateFiles } from "@dup-detector/modules";
+import { FileHashWithCache, FindDuplicateFiles } from "@dup-detector/modules";
 import { NextRequest, NextResponse } from "next/server";
 import { extractErrorMessage } from "../../../../utils/extract-error-message";
+import { FileSystemCache } from "file-system-cache";
+import { resolve } from "node:path";
+import { FileSystemCacheAdapter } from "../_utils/file-system-cache-adapter";
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -10,7 +13,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const findDuplicateFiles = new FindDuplicateFiles(new FileHash());
+    const fileHashCache = new FileSystemCache({ basePath: resolve(process.cwd(), ".dup-detector/.cache") });
+    const fileHashWithCache = new FileHashWithCache(new FileSystemCacheAdapter(fileHashCache));
+    const findDuplicateFiles = new FindDuplicateFiles(fileHashWithCache);
     const ignoreDirs: string[] = [...FindDuplicateFiles.defaultIgnoreDirs, ".next"];
     const duplicatedFiles = await findDuplicateFiles.find(dirPath, ignoreDirs);
     return NextResponse.json({ data: duplicatedFiles });
