@@ -13,7 +13,7 @@ export function FilePreview({ path }: FilePreviewProps) {
   }
 
   if (error) {
-    <div className="text-red-500">{error}</div>;
+    return <div className="text-red-500">{error}</div>;
   }
 
   if (data === undefined) {
