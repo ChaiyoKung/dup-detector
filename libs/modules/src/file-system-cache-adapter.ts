@@ -1,5 +1,5 @@
-import { FileHashCache } from "@dup-detector/modules";
 import { FileSystemCache } from "file-system-cache";
+import { FileHashCache } from "./file-hash-with-cache";
 
 export class FileSystemCacheAdapter implements FileHashCache {
   constructor(private readonly fileSystemCache: FileSystemCache) {}
