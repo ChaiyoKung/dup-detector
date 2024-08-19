@@ -42,6 +42,7 @@ export async function DELETE(request: NextRequest) {
     await deleteFile(decodeURIComponent(path));
     return Response.json({ message: "delete file success" });
   } catch (error) {
+    console.error(error);
     const errorMessage = extractErrorMessage(error);
     return NextResponse.json({ message: errorMessage }, { status: 500 });
   }
