@@ -41,7 +41,7 @@ export async function DELETE(request: NextRequest) {
 
     const softDelete = body.softDelete ?? false;
     if (typeof softDelete !== "boolean") {
-      return NextResponse.json({ message: "invalid 'softDelete' type" }, { status: 404 });
+      return NextResponse.json({ message: "invalid 'softDelete' type" }, { status: 400 });
     }
 
     await deleteFile(decodeURIComponent(path), softDelete);
