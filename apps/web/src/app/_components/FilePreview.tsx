@@ -1,6 +1,6 @@
-import useLookupFile from "../../../hooks/useLookupFile";
+import { useLookupFile } from "../../../hooks/useLookupFile";
 import { LocalImage } from "../../../components/LocalImage";
-import LocalVideo from "../../../components/LocalVideo";
+import { LocalVideo } from "../../../components/LocalVideo";
 import { LocalAudio } from "../../../components/LocalAudio";
 
 interface FilePreviewProps {

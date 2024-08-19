@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { extractErrorMessage } from "../utils/extract-error-message";
 
-export default function useCwd() {
+export function useCwd() {
   const [data, setData] = useState<string>();
   const [error, setError] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
