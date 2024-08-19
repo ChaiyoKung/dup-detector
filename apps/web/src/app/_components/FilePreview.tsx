@@ -1,5 +1,6 @@
 import useLookupFile from "../../../hooks/useLookupFile";
 import { LocalImage } from "../../../components/LocalImage";
+import LocalVideo from "../../../components/LocalVideo";
 
 interface FilePreviewProps {
   path: string;
@@ -45,11 +46,7 @@ export function FilePreview({ path }: FilePreviewProps) {
   }
 
   if (data.startsWith("video")) {
-    return (
-      <div className="text-yellow-500 bg-yellow-100 rounded-xl border border-yellow-300 border-dashed p-2 w-full">
-        {data}
-      </div>
-    );
+    return <LocalVideo path={path} controls className="rounded-xl max-h-48" />;
   }
 
   return (
