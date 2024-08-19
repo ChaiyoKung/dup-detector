@@ -1,8 +1,9 @@
-import useLookupFile from "../../../hooks/useLookupFile";
+import { useLookupFile } from "../../../hooks/useLookupFile";
 import { LocalImage } from "../../../components/LocalImage";
-import LocalVideo from "../../../components/LocalVideo";
+import { LocalVideo } from "../../../components/LocalVideo";
+import { LocalAudio } from "../../../components/LocalAudio";
 
-interface FilePreviewProps {
+export interface FilePreviewProps {
   path: string;
 }
 
@@ -38,11 +39,7 @@ export function FilePreview({ path }: FilePreviewProps) {
   }
 
   if (data.startsWith("audio")) {
-    return (
-      <div className="text-purple-500 bg-purple-100 rounded-xl border border-purple-300 border-dashed p-2 w-full">
-        {data}
-      </div>
-    );
+    return <LocalAudio path={path} controls className="rounded-xl max-h-48 max-w-full" />;
   }
 
   if (data.startsWith("video")) {

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { extractErrorMessage } from "../utils/extract-error-message";
 
-export default function useLookupFile(path: string) {
+export function useLookupFile(path: string) {
   const [data, setData] = useState<string>();
   const [error, setError] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>(true);

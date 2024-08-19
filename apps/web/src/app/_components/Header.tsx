@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useDataStore } from "../_stores/useDataStore";
-import useCwd from "../../../hooks/useCwd";
+import { useCwd } from "../../../hooks/useCwd";
 
 export function Header() {
   const [dirPath, setDirPath] = useState<string>("");
