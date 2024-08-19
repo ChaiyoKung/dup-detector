@@ -1,3 +1,5 @@
+![banner](banner.png)
+
 # Dup-Detector
 
 Apps to identify duplicate files within a specified directory
