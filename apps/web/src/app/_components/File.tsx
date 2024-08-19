@@ -16,7 +16,7 @@ export function File({ path, showDelete = false }: FileProps) {
         {showDelete && (
           <button
             className="text-xs bg-red-500 hover:bg-red-600 transition-colors border border-red-500 text-white px-2 py-1 rounded-full"
-            onClick={() => deleteFile(path)}
+            onClick={() => deleteFile(path, true)}
           >
             Del
           </button>

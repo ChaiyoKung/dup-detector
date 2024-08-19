@@ -39,9 +39,15 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ message: "file not found" }, { status: 404 });
     }
 
-    await deleteFile(decodeURIComponent(path));
+    const softDelete = body.softDelete ?? false;
+    if (typeof softDelete !== "boolean") {
+      return NextResponse.json({ message: "invalid 'softDelete' type" }, { status: 400 });
+    }
+
+    await deleteFile(decodeURIComponent(path), softDelete);
     return Response.json({ message: "delete file success" });
   } catch (error) {
+    console.error(error);
     const errorMessage = extractErrorMessage(error);
     return NextResponse.json({ message: errorMessage }, { status: 500 });
   }
