@@ -3,7 +3,7 @@ import { LocalImage } from "../../../components/LocalImage";
 import { LocalVideo } from "../../../components/LocalVideo";
 import { LocalAudio } from "../../../components/LocalAudio";
 
-interface FilePreviewProps {
+export interface FilePreviewProps {
   path: string;
 }
 

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-interface LocalVideoProps extends React.ComponentPropsWithoutRef<"video"> {
+export interface LocalVideoProps extends React.ComponentPropsWithoutRef<"video"> {
   path: string;
 }
 

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-interface LocalAudioProps extends React.ComponentPropsWithoutRef<"audio"> {
+export interface LocalAudioProps extends React.ComponentPropsWithoutRef<"audio"> {
   path: string;
 }
 
