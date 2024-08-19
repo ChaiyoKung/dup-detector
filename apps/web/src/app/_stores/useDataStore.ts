@@ -6,7 +6,7 @@ export interface DataStore {
   error: string | undefined;
   isLoading: boolean;
   fetchData: (dirPath: string) => void;
-  deleteData: (filePath: string) => void;
+  deleteData: (filePath: string, softDelete?: boolean) => void;
 }
 
 export const useDataStore = create<DataStore>((set) => ({
@@ -28,11 +28,11 @@ export const useDataStore = create<DataStore>((set) => ({
       set({ isLoading: false });
     }
   },
-  deleteData: async (filePath) => {
+  deleteData: async (filePath, softDelete = false) => {
     try {
       const response = await fetch("/api/files", {
         method: "DELETE",
-        body: JSON.stringify({ path: filePath }),
+        body: JSON.stringify({ path: filePath, softDelete }),
       });
       const body = await response.json();
       if (!response.ok) throw new Error(body.message);
